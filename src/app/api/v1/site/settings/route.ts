@@ -120,8 +120,13 @@ function parsePublicPagesBody(raw: unknown) {
       ? Object.fromEntries(
           Object.entries(body.homeCategoryLimits as Record<string, unknown>)
             .map(([code, value]) => [code.trim().toLowerCase(), Number(value)])
-            .filter(([code, value]) => Boolean(code) && Number.isFinite(value) && value > 0)
-            .map(([code, value]) => [code, Math.min(20, Math.floor(value))]),
+            .filter(([code, value]) => {
+              if (!code || !Number.isFinite(value)) {
+                return false;
+              }
+              return Number(value) > 0;
+            })
+            .map(([code, value]) => [code, Math.min(20, Math.floor(Number(value)))]),
         )
       : {};
 

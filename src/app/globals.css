@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --bg: #f7fbff;
@@ -24,10 +26,6 @@
   --accent-strong: #9cd2fb;
   --warn: #ff8f8f;
   --shadow: 0 12px 28px #00000066;
-}
-
-@theme inline {
-  --font-sans: var(--font-body);
 }
 
 * {

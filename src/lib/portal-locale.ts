@@ -47,12 +47,12 @@ function subscribe(callback: () => void) {
   };
 }
 
-function getSnapshot() {
+function getSnapshot(): Locale {
   return getDefaultLocale();
 }
 
-export function usePortalLocale() {
-  return useSyncExternalStore(subscribe, getSnapshot, () => "en");
+export function usePortalLocale(): Locale {
+  return useSyncExternalStore(subscribe, getSnapshot, () => "en" as Locale);
 }
 
 export function setPortalLocale(locale: Locale) {
